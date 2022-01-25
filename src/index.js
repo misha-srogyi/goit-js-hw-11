@@ -1,6 +1,8 @@
 import './sass/main.scss';
 import ImageApiService from './pixabay';
 import Notiflix from 'notiflix';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
     loadMoreBtn: document.querySelector(".load-more-btn"),
@@ -102,10 +104,16 @@ function markupImageEl(photos) {
     }).join('');
 
     refs.gallery.insertAdjacentHTML('beforeend', markup);
-    
+    simpleLightbox();
 }
 
 function clearMarkup() {
     refs.gallery.innerHTML = ''
     // refs.loadMoreBtn.classList.toggle('is-hidden');
+}
+function simpleLightbox() {
+    let lightbox = new SimpleLightbox('.gallery a', {
+    /* options */
+    });
+    lightbox.refresh();
 }
